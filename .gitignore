@@ -1,0 +1,13 @@
+*.pyc
+ud120-projects/enron_mail_20110402.tgz
+ud120-projects/enron_mail_20110402/
+ud120-projects/enron_mail_20150507.tgz
+ud120-projects/maildir/
+ud120-projects/text_learning/your_word_data.pkl
+ud120-projects/text_learning/your_email_authors.pkl
+ud120-projects/my_classifier.pkl
+ud120-projects/my_dataset.pkl
+ud120-projects/my_feature_list.pkl
+.DS_Store
+__pycache__
+venv/
