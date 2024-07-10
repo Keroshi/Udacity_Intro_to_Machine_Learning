@@ -108,27 +108,60 @@
 # plt.title("Plot for n_estimators against accuracy")
 # plt.show()
 
-from sklearn.metrics import precision_score, recall_score
+# from sklearn.metrics import precision_score, recall_score
+#
+# true_labels = [0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0]
+# predictions = [0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1]
+#
+# precision = precision_score(true_labels, predictions)
+# recall = recall_score(true_labels, predictions)
+# print(precision, recall)
+#
+# combined_array = []
+# counter = 0
+# for i in true_labels:
+#     combined_array.append([true_labels[counter], predictions[counter]])
+#     counter += 1
+#
+# true = []
+# counter = 0
+# for i in combined_array:
+#     if combined_array[counter][0] == combined_array[counter][1]:
+#         if combined_array[counter][0] == 1 and combined_array[counter][1] == 1:
+#             true.append(1)
+#     counter += 1
+# print(combined_array)
+# print(len(true))
 
-true_labels = [0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0]
-predictions = [0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1]
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
-precision = precision_score(true_labels, predictions)
-recall = recall_score(true_labels, predictions)
-print(precision, recall)
+# Generate data for the sine wave
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
 
-combined_array = []
-counter = 0
-for i in true_labels:
-    combined_array.append([true_labels[counter], predictions[counter]])
-    counter += 1
+# Create a figure and an axis
+fig, ax = plt.subplots()
+line, = ax.plot(x, y)
 
-true = []
-counter = 0
-for i in combined_array:
-    if combined_array[counter][0] == combined_array[counter][1]:
-        if combined_array[counter][0] == 1 and combined_array[counter][1] == 1:
-            true.append(1)
-    counter += 1
-print(combined_array)
-print(len(true))
+# Set the axes limits
+ax.set_xlim(0, 2 * np.pi)
+ax.set_ylim(-1.1, 1.1)
+
+
+# Define the animation function
+def animate(i):
+    line.set_ydata(np.sin(x + i / 10.0))
+    return line,
+
+
+# Create the animation object
+ani = animation.FuncAnimation(fig, animate, frames=100, interval=20, blit=True)
+
+# Display the animation
+plt.show()
+
+# Optionally save the animation as a GIF or MP4
+# ani.save('sine_wave_animation.mp4', writer='ffmpeg')
+# ani.save('sine_wave_animation.gif', writer='imagemagick')
